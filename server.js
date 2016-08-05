@@ -51,7 +51,20 @@ function handleError(res, reason, message, code) {
 
 // Post
  app.post("/notes", function(req, res) {
+   var newNote = req.body;
+   newNote.createDate = new Date();
 
+   if(!(req.body.title || req.body.value)) {
+     handleError(res, "Invalid user input", "Must provide a title or value.", 400);
+   }
+
+   db.collection(NOTES_COLLECTION).insertOne(newNote, function(err, doc) {
+     if(err) {
+       handleError(res, err.message, "Failed to create new note");
+     } else {
+       res.status(201).json(doc.ops[0]);
+     }
+   });
  });
 
  /*   "/notes/:id"
