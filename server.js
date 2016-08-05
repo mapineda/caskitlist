@@ -31,4 +31,46 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
   });
 });
 
-//CONTACT API ROUTES BELOW
+//NOTE API ROUTES BELOW
+
+// error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+  console.log("Error: " + reason);
+  res.status(code || 500).json({"error": message});
+}
+
+/* "/notes"
+ * GET: finds all notes
+ * POST: creates a new note
+ */
+
+// GET
+ app.get("/notes", function(req, res) {
+
+ });
+
+// Post
+ app.post("/notes", function(req, res) {
+
+ });
+
+ /*   "/notes/:id"
+  *   GET find notes by id
+  *   PUT: update notes by id
+  *   DELETE: deletes notes by id
+  */
+
+// GET NOTES/:ID
+app.get("/notes/:id", function(req, res) {
+
+});
+
+//PUT NOTES/:ID
+app.put("/notes/:id", function(req, res) {
+
+});
+
+//DELETE/:ID
+app.delete("notes/:id", function(req, res) {
+
+});
